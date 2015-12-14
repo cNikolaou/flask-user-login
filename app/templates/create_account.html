@@ -1,0 +1,14 @@
+{% extends 'base_layer.html' %}
+
+{% block content %}
+<h1>Create a new account</h1>
+<form action="" method="POST" name="create_account">
+  <p>Enter your nickname</p>
+  <input type="text" name="nickname">
+  <p>Enter your password</p>
+  <input type="password" name="password">
+  <p>Re-enter your password</p>
+  <input type="password" name="test_password">
+  <p><input type="submit" name="Create Account"></p>
+</form>
+{% endblock %}
