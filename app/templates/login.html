@@ -4,6 +4,18 @@
 
 <h1>Sign In</h1>
 <form action="" method="POST" name="login">
+
+  <!-- Print for flashed messages -->
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  {% endwith %}
+  
   <p>Please enter your username:<br></p>
   <input type="text" name="username">
   <p>Please enter your password:<br></p>
