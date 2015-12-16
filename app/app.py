@@ -47,11 +47,22 @@ def login():
 
         flash('Username:%s and password:%s' % (username, password))
 
-        #if username == 'user' and password == 'pass':
-        #    return redirect(url_for('index')
+        user = User.query.filter_by(username=username).first()
+
+        if user is None:
+            flash('Username does not exist in the database')
+            return redirect('/login')
+        else:
+            if password != user.password:
+                flash('WRONG PASSWORD!')
+                return redirect('/login')
+            else:
+                flash('Logged into the system!')
+                flash('Hello %s' % username)
+                return redirect('/login')
 
         #flash('User not found!')
-        #return redirect(url_for('login'))
+        return redirect(url_for('index'))
 
     return render_template('login.html')
 
