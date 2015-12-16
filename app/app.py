@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, flash, redirect
 from flask.ext.sqlalchemy import SQLAlchemy
-#from flask.ext.login import LoginManager
-import config
+from flask.ext.login import LoginManager, login_user, logout_user, \
+                            login_required, UserMixin
+#import config
 
 # Configuration
 SECRET_KEY = "secret!"
@@ -12,12 +13,12 @@ app = Flask(__name__)
 app.secret_key = SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy(app)
-#login_manager = LoginManager()
-#login_manager.init_app(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 
 ## Models
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
     password = db.Column(db.String(100), nullable=False)
@@ -31,6 +32,11 @@ class User(db.Model):
 
 
 ## Views
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -57,9 +63,10 @@ def login():
                 flash('WRONG PASSWORD!')
                 return redirect('/login')
             else:
+                login_user(user)
                 flash('Logged into the system!')
                 flash('Hello %s' % username)
-                return redirect('/login')
+                return redirect('/index')
 
         #flash('User not found!')
         return redirect(url_for('index'))
@@ -104,6 +111,12 @@ def create_account():
 
     return render_template('create_account.html')
 
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('You were logged out!')
+    return redirect('/index')
 
 if __name__ == '__main__':
     app.run(debug=True)
