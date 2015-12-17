@@ -6,7 +6,7 @@ from flask.ext.login import LoginManager, login_user, logout_user, \
 
 # Configuration
 SECRET_KEY = "secret!"
-SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/test.db'
+SQLALCHEMY_DATABASE_URI = 'postgresql://christos:aaa@localhost/test.db'
 
 ## App initiallization
 app = Flask(__name__)
@@ -30,6 +30,8 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return '<User %r>' % self.username
 
+db.create_all()
+db.session.commit()
 
 ## Views
 @login_manager.user_loader
