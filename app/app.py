@@ -6,7 +6,7 @@ from flask.ext.login import LoginManager, login_user, logout_user, \
 
 # Configuration Variables
 SECRET_KEY = "secret_secret"
-SQLALCHEMY_DATABASE_URI = 'postgresql://christos:aaa@localhost/test.db'
+SQLALCHEMY_DATABASE_URI = 'postgresql://username:password@localhost/test.db'
 
 ## App initiallization
 app = Flask(__name__)
