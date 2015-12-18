@@ -5,10 +5,12 @@ This is a side project that I am working on as I learn how to build web applicat
 
 The packages that are used are:
 
-1.  flask
-2.  flask-login
-3.  flask-sqlalchemy
+1.  [flask](http://flask.pocoo.org/)
+2.  [flask-login](https://flask-login.readthedocs.org/en/latest/)
+3.  [flask-sqlalchemy](http://flask-sqlalchemy.pocoo.org/2.1/)
 4.  psycopg (if PostgreSQL is used as a Database Management System)
 
----
+To install the package dependencies run the `setup.sh` script.
+
+--- 
 This is an infant project created to help me explore Flask's capabilities, but it might be useful to someone else aswell.
