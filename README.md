@@ -13,6 +13,7 @@ The packages that are used are:
 
 ---
 To use the package you need to do the following steps:
+
 1. From the `config-example.py` file create the `config.py` file with:
 ```
   cp config-example.py config.py
