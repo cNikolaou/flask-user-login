@@ -10,7 +10,16 @@ The packages that are used are:
 3.  [flask-sqlalchemy](http://flask-sqlalchemy.pocoo.org/2.1/)
 4.  psycopg (if PostgreSQL is used as a Database Management System)
 
-To install the package dependencies run the `setup.sh` script.
 
---- 
+---
+To use the package you need to do the following steps:
+1. From the `config-example.py` file create the `config.py` file with:
+```
+  cp config-example.py config.py
+```
+2. Modify the `config.py` file to include your database URI. See [this for more information](http://flask-sqlalchemy.pocoo.org/2.1/config/#connection-uri-format)
+3. Install your virtual environment and then activate it. More info [here](http://flask.pocoo.org/docs/0.10/installation/)
+4. Install the package dependencies by running the `setup.sh` script.
+
+---
 This is an infant project created to help me explore Flask's capabilities, but it might be useful to someone else aswell.

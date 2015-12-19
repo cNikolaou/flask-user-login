@@ -1,2 +1,8 @@
+# ignore the virtual environment
 venv/
+
+# ignore python compiled code
 *.pyc
+
+# ignore the configuration file to prevent personal data leakage
+app/config.py
